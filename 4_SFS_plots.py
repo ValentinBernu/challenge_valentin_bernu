@@ -3,10 +3,6 @@ from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.datasets import load_iris
-# select features from test & apply classifers
-
-# pas d'outlier ni de nan ou de none (pe etre quelques barres a zero)
-# il faut rescale ou renormer vu les data
 from sklearn.feature_selection import SequentialFeatureSelector
 from sklearn.ensemble import GradientBoostingClassifier
 import matplotlib.pyplot as plt
