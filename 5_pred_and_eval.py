@@ -49,9 +49,6 @@ pred_df.to_csv("predictions_test_data.csv", index=False)
 ######################
 # Confusion matrices #
 ######################
-# Rename for clearer plot
-# Label encode the features
-
 
 # test data
 plot_confusion_matrix(model, X_test_SFS, y_test)
