@@ -20,9 +20,9 @@ test = pd.read_csv("test.csv")
 # Apply SFS #
 #############
 N_feature = 10
-
-
 model = svm.SVC()
+
+# Train & test data
 X_train, y_train = train_selected.drop(
     columns=["type"]), train_selected["type"]
 X_test, y_test = test.drop(
@@ -35,9 +35,18 @@ X_train_SFS = sfs.transform(X_train)
 #X_test_SFS = sfs.transform(X_test)
 selected_columns = list(sfs.k_feature_names_)
 X_test_SFS = X_test[selected_columns]
+
+#############
+# Fit model #
+#############
+
 model = svm.SVC()
 model.fit(X_train_SFS, y_train)
 y_prediction = model.predict(X_test_SFS)
+
+##########################
+# Print and save results #
+##########################
 
 print(accuracy_score(y_test, y_prediction))
 # Overfit par SFS donc attendu qu'on perde un peu, c'est raisonnable
