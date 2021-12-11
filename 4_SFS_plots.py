@@ -1,10 +1,7 @@
 from mlxtend.plotting import plot_sequential_feature_selection as plot_sfs
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 import matplotlib.pyplot as plt
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.datasets import load_iris
 from sklearn.feature_selection import SequentialFeatureSelector
-from sklearn.ensemble import GradientBoostingClassifier
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
