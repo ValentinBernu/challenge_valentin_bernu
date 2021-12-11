@@ -58,30 +58,35 @@ for i in range(1):
                 )
     plt.clf()
 
-#####################################
-# Test if the features are Gaussian #
-#####################################
+#############################
+# Are the features normal ? #
+#############################
+
+# get pvalues
 p_values = []
 for i in range(2000):
     column = random.choice(columns)
     if column != "type":
         p_values.append(stats.shapiro(train_ohe[column]).pvalue)
 
+# Plot the p values
 sns.histplot(p_values, stat="count", bins=100)
 #plt.axvline(x=0.05, c='r')
 plt.xlabel("pvalues")
 plt.title("Histogram of pvalues of Shapiro test (rd sample)")
 plt.savefig("images/pvalues_shapiro/pvalues_shapiro",
             bbox_inches="tight")
+
 # Apply FDR correction to pvalues
 pval_FDR_corrected = fdrcorrection(p_values)
+
 # Print % of gaussian distribution
 list_bool = pval_FDR_corrected[0].tolist()
 percentage_gaussian = len([e for e in list_bool if e == True]) / len(list_bool)
 print("percentage_gaussian features = {}".format(percentage_gaussian))
 
 #####################################
-# Test correlations of the features #
+# Plot correlations of the features #
 #####################################
 # Loop to test 10 features randomly 10 times
 # to accounts for the very high number of columns
