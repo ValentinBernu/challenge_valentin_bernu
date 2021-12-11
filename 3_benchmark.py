@@ -69,6 +69,7 @@ for model_name, model in model_dict.items():
             clf, X, y, cv=3, scoring="accuracy")))
     benchmark_df[model_name] = res
 
+# Plot the benchmark
 sns.boxplot(data=benchmark_df)
 plt.xlabel("Models")
 plt.ylabel("Average cross validated accuracy")
