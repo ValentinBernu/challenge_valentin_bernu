@@ -4,7 +4,7 @@ The python files are the steps of the study.
 They are designed to be executed in order: from 1 to 5. 
 The images produced by the python files are in the "images" folder.
 
-The steps are explained in the .pdf files sent by mail. 
+The steps are explained in the .pdf file sent by mail. 
 
 The prediction made on the test data are stored in the file "predictions_test_data.csv".
 
