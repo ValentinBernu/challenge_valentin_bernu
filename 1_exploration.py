@@ -21,6 +21,7 @@ tumor_columns_list = train_ohe.columns[-4:]
 tumor_name_list = [e[19:] for e in tumor_columns_list]
 for i, column in enumerate(tumor_columns_list):
     train_ohe = train_ohe.rename(columns={column: tumor_name_list[i]})
+    
 # Update the list of tumor type names
 tumor_columns_list = tumor_name_list
 
@@ -49,7 +50,7 @@ print("Nb {} = {}".format("tot", n_tot))
 # Plot 10 random histograms & save in a file
 # Plot with a smoothing to observe if the distribution is Gaussian
 columns = train_ohe.columns
-for i in range(1):
+for i in range(10):
     column = random.choice(columns)
     plt.title("Histogram of: {} ".format(column))
     sns.histplot(train_ohe, stat="count", x=column, kde=True)
