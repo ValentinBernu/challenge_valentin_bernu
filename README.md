@@ -6,6 +6,6 @@ The images produced by the python files are in the "images" folder.
 
 The steps are explained in the .pdf file sent by mail. 
 
-The prediction made on the test data are stored in the file "predictions_test_data.csv".
+The predictions made on the test data are stored in the file "predictions_test_data.csv".
 
 The file requirements.txt indicates the requirements. 
