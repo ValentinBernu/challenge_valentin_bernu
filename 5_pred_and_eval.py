@@ -8,13 +8,12 @@ from sklearn.metrics import accuracy_score
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 from sklearn.naive_bayes import GaussianNB
 import pandas as pd
+
+# Read selected train data
 train_selected = pd.read_csv("train_selected_KW_Bonferroni.csv")
+# Read test data
 test = pd.read_csv("test.csv")
 
-####################################
-# Apply preprocessing to test data #
-####################################
-# The scaling does not change Gaussian NB results
 
 #############
 # Apply SFS #
@@ -22,16 +21,21 @@ test = pd.read_csv("test.csv")
 N_feature = 10
 model = svm.SVC()
 
-# Train & test data
+# Create train & test data
 X_train, y_train = train_selected.drop(
     columns=["type"]), train_selected["type"]
 X_test, y_test = test.drop(
     columns=["type"]), test["type"]
 
+# Build the SFS model
 sfs = SFS(model, k_features=N_feature, forward=True,
           floating=False, scoring='accuracy', cv=3)
+
+# Fit SFS on train data
 sfs.fit(X_train, y_train)
 X_train_SFS = sfs.transform(X_train)
+
+# Use SFS on test data
 #X_test_SFS = sfs.transform(X_test)
 selected_columns = list(sfs.k_feature_names_)
 X_test_SFS = X_test[selected_columns]
@@ -39,7 +43,6 @@ X_test_SFS = X_test[selected_columns]
 #############
 # Fit model #
 #############
-
 model = svm.SVC()
 model.fit(X_train_SFS, y_train)
 y_prediction = model.predict(X_test_SFS)
@@ -47,9 +50,8 @@ y_prediction = model.predict(X_test_SFS)
 ##########################
 # Print and save results #
 ##########################
-
 print(accuracy_score(y_test, y_prediction))
-# Overfit par SFS donc attendu qu'on perde un peu, c'est raisonnable
+# The score loss is probably due to SFS overfitting
 pred_df = pd.DataFrame()
 pred_df["type"] = y_prediction
 pred_df.to_csv("predictions_test_data.csv", index=False)
