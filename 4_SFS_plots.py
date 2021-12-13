@@ -50,4 +50,3 @@ def plot_SFS(label, model, n_feat):
 
 # Only plot SFS for the weakest learners
 plot_SFS("SVM", svm.SVC(), 20)
-plot_SFS("MNB", MultinomialNB(), 20)

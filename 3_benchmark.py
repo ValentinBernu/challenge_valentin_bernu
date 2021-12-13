@@ -47,7 +47,6 @@ model_dict["Lo"] = LogisticRegression(
     multi_class="multinomial")
 model_dict["RF"] = RandomForestClassifier()
 model_dict["GNB"] = GaussianNB()
-model_dict["MNB"] = MultinomialNB()
 model_dict["SVM"] = svm.SVC()
 model_dict["DS"] = DummyClassifier(strategy="stratified")
 model_dict["DMF"] = DummyClassifier(strategy="most_frequent")
