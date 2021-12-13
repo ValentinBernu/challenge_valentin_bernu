@@ -1,12 +1,8 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import plot_confusion_matrix
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.naive_bayes import MultinomialNB
 from sklearn import svm
 from sklearn.metrics import accuracy_score
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
-from sklearn.naive_bayes import GaussianNB
 import pandas as pd
 
 # Read selected train data

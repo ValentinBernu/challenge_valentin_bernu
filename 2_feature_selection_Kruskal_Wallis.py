@@ -1,6 +1,7 @@
 from scipy import stats
 import pandas as pd
 
+# Get data
 train = pd.read_csv("train.csv")
 train = train.drop(["Unnamed: 0", "samples"], axis=1)
 

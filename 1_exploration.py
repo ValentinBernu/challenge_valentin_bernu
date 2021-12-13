@@ -1,6 +1,4 @@
-
 from statsmodels.stats.multitest import fdrcorrection
-import statsmodels
 from scipy import stats
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -21,7 +19,7 @@ tumor_columns_list = train_ohe.columns[-4:]
 tumor_name_list = [e[19:] for e in tumor_columns_list]
 for i, column in enumerate(tumor_columns_list):
     train_ohe = train_ohe.rename(columns={column: tumor_name_list[i]})
-    
+
 # Update the list of tumor type names
 tumor_columns_list = tumor_name_list
 

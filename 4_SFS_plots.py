@@ -1,17 +1,7 @@
 from mlxtend.plotting import plot_sequential_feature_selection as plot_sfs
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 import matplotlib.pyplot as plt
-from sklearn.feature_selection import SequentialFeatureSelector
-import seaborn as sns
-import numpy as np
-from sklearn.model_selection import cross_val_score
-from sklearn.linear_model import LogisticRegression
 from sklearn import svm
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.dummy import DummyClassifier
-from numpy.core.numeric import normalize_axis_tuple
-from scipy import stats
 import pandas as pd
 from sklearn.naive_bayes import MultinomialNB
 
@@ -35,14 +25,17 @@ def plot_SFS(label, model, n_feat):
         n_feat ([int]): [Number max of feature to select]
     """
     clf = model
+    # Define SFS
     sfs = SFS(clf,
               k_features=n_feat,
               forward=True,
               floating=False,
               scoring='accuracy',
               cv=3)
-
+    # Fit SFS
     sfs = sfs.fit(X, y)
+
+    # Plot SFS
     fig1 = plot_sfs(sfs.get_metric_dict(),
                     kind='std_dev',
                     figsize=(6, 4))

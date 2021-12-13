@@ -1,5 +1,3 @@
-from sklearn.metrics import accuracy_score
-from sklearn.ensemble import GradientBoostingClassifier
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
@@ -9,12 +7,10 @@ from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.dummy import DummyClassifier
-from numpy.core.numeric import normalize_axis_tuple
-from scipy import stats
 import pandas as pd
 from sklearn.naive_bayes import MultinomialNB
 
-
+# Get data
 train_selected = pd.read_csv("train_selected_KW_Bonferroni.csv")
 print(train_selected.shape)
 
